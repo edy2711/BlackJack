@@ -1,12 +1,11 @@
-const loadButton = document.getElementById('loadButton');
-const messageElement = document.getElementById('message');
+document.addEventListener("DOMContentLoaded", function() {
+    const loadButton = document.getElementById("loadButton");
 
-async function loadMessage() {
-  try {
-    const response = await fetch('http://localhost:3001');
-    const data = await response.json();
-    messageElement.textContent = data.message;
-  } catch (error) {
-    messageElement.textContent = 'Error al cargar el mensaje.';
-  }
-}
+    if (loadButton) {
+        loadButton.addEventListener("click", function() {
+            window.location.href = "https://localhost:3001";
+        });
+    } else {
+        console.error("El botón con el ID 'loadButton' no se encuentra en el HTML.");
+    }
+});
