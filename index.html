@@ -3,24 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aplicación Gato</title>
+    <title>Juego 3 en Raya</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div class="container">
-    <header>
-        <h1>Bienvenido a la aplicación Gato</h1>
-    </header>
-    <main>
-        <div class="content">
-            <p id="message"></p>
-            <button id="loadButton">Cargar mensaje desde el servidor</button>
-        </div>
-    </main>
-    <footer>
-        <p>&copy; 2025 GatoApp</p>
-    </footer>
-</div>
-<script src="app.js"></script>
+    <h1>3 en Raya</h1>
+    <div id="game-board">
+        <div class="cell" data-id="0"></div>
+        <div class="cell" data-id="1"></div>
+        <div class="cell" data-id="2"></div>
+        <div class="cell" data-id="3"></div>
+        <div class="cell" data-id="4"></div>
+        <div class="cell" data-id="5"></div>
+        <div class="cell" data-id="6"></div>
+        <div class="cell" data-id="7"></div>
+        <div class="cell" data-id="8"></div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
