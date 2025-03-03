@@ -28,7 +28,7 @@ h1 {
     border: 2px solid #333;
     font-size: 36px;
     cursor: pointer;
-    background-color: white;
+    background-color: blue;
 }
 
 .cell:hover {
