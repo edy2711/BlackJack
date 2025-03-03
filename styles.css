@@ -6,8 +6,8 @@
 
 body {
   font-family: Arial, sans-serif;
-  display: flex;
-  flex-direction: column;
+  display: flex !important;
+  flex-direction: column !important;
   justify-content: center;
   align-items: center;
   height: 100vh;
