@@ -1,7 +1,3 @@
-const socket = io();
-const cells = document.querySelectorAll('.cell');
-let player = 'X';
-let board = ['', '', '', '', '', '', '', '', ''];
 let turno = 'X';
 let tablero = ['', '', '', '', '', '', '', '', ''];
 let juegoActivo = true;
@@ -24,6 +20,41 @@ function hacerJugada(idCelda) {
   }
 }
 
+// Verificar si hay un ganador
+function verificarGanador() {
+  const combinacionesGanadoras = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6]
+  ];
+
+  for (let combinacion of combinacionesGanadoras) {
+    const [a, b, c] = combinacion;
+    if (tablero[a] && tablero[a] === tablero[b] && tablero[a] === tablero[c]) {
+      mensaje.innerText = `¡El jugador ${tablero[a]} gana!`;
+      juegoActivo = false;
+      return;
+    }
+  }
+
+  if (!tablero.includes('')) {
+    mensaje.innerText = '¡Es un empate!';
+    juegoActivo = false;
+  }
+}
+
+// Reiniciar el juego
+function reiniciarJuego() {
+  tablero = ['', '', '', '', '', '', '', '', ''];
+  juegoActivo = true;
+  mensaje.innerText = '';
+  actualizarTablero();
+}
 // Verificar si hay un ganador
 function verificarGanador() {
   const combinacionesGanadoras = [
