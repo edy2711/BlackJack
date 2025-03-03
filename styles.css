@@ -30,7 +30,7 @@ h1 {
 .celda {
   width: 100px;
   height: 100px;
-  background-color: blue;
+  background-color: #fff;
   border: 2px solid #000;
   display: flex;
   justify-content: center;
@@ -42,7 +42,7 @@ h1 {
 }
 
 .celda:hover {
-  background-color: #f0f0f0;
+  background-color: blue;
 }
 
 button {
@@ -51,7 +51,7 @@ button {
   padding: 10px 20px;
   font-size: 16px;
   background-color: #4CAF50;
-  color: yellow;
+  color: white;
   border: none;
   cursor: pointer;
 }
