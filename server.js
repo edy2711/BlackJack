@@ -3,17 +3,39 @@ const http = require('http');
 const socketIo = require('socket.io');
 
 const app = express();
-currentPlayer === (players[const port = 3001;
+const server = http.createServer(app);
+const io = socketIo(server);
 
-app.use(cors());  // Asegúrate de tener CORS habilitado
-app.use(express.json());  // Asegura que las solicitudes reciban JSON
+let gameState = ['', '', '', '', '', '', '', '', ''];
+let currentPlayer = 'X';
+let players = {};
 
-app.get('/', (req, res) => {
-  res.json({ message: '¡Hola desde el servidor de Gato!' });
+app.use(express.static('public'));
+
+io.on('connection', (socket) => {
+    console.log('Un jugador se ha conectado: ' + socket.id);
+
+    socket.emit('gameState', gameState);
+
+    socket.on('playerMove', (index) => {
+        if (gameState[index] === '' && currentPlayer === (players[socket.id] || 'X')) {
+            gameState[index] = currentPlayer;
+            currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+            io.emit('gameState', gameState);
+        }
+    });
+
+    if (!players[socket.id]) {
+        players[socket.id] = currentPlayer;
+        currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+    }
+
+    socket.on('disconnect', () => {
+        console.log('Un jugador se ha desconectado: ' + socket.id);
+        delete players[socket.id];
+    });
 });
 
-app.listen(port, () => {
-  console.log(`Servidor corriendo en http://localhost:${port}`);
+server.listen(3001, () => {
+    console.log('Servidor corriendo en http://localhost:3001');
 });
-
-7968b77 (Guardando cambios antes del pull)
