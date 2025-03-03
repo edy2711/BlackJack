@@ -2,11 +2,15 @@ const express = require('express');
 const cors = require('cors');
 
 const app = express();
-app.use(cors());
-app.use(express.json());
+const port = 3001;
+
+app.use(cors());  // Habilita CORS
+app.use(express.json());  // Asegura que las solicitudes reciban JSON
 
 app.get('/', (req, res) => {
-    res.send({ message: "¡Hola desde el backend!" });
+  res.json({ message: '¡Hola desde el servidor de Gato!' });
 });
 
-app.listen(3001, () => console.log("Servidor corriendo en http://localhost:3001"));
+app.listen(port, () => {
+  console.log(`Servidor corriendo en http://localhost:${port}`);
+});
